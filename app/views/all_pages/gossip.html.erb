@@ -1,4 +1,4 @@
-<h1> This is the page for the gossip : <%= @gossip.title %> </h1>
-<p> <%= @gossip.content %> <p>
-<p> Created on <%= @gossip.created_at %> <p>
-<p> You can see the author's profile here -> <a href="/author/<%= @gossip.user.first_name %>"><%= @gossip.user.first_name %></a>
+<h1 class="text-center pt-5"> This is the page for the gossip : <%= @gossip.title %> </h1>
+<p class="text-center pt-2"> <%= @gossip.content %> <p>
+<p class="text-center"> Created on <%= @gossip.created_at %> <p>
+<p class="text-center"> You can see the author's profile here -> <a href="/author/<%= @gossip.user.first_name %>"><%= @gossip.user.first_name %></a>

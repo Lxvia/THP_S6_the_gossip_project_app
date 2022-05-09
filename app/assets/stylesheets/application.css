@@ -90,3 +90,11 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+#jumbotron {
+    background-color: rgb(255, 171, 103);
+}
+
+.lien_read {
+    color: rgb(255, 171, 103);
+}
