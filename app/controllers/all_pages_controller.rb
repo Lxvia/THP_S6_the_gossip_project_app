@@ -17,7 +17,7 @@ class AllPagesController < ApplicationController
   end
 
   def author
-    @gossip = User.find(params[:first_name])
+    @author = User.find_by(first_name:params[:first_name])
   end
 
 end

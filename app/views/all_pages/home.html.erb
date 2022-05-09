@@ -1,15 +1,18 @@
-<h1 class="text-center"> Hello <%= @first_name %> ! Welcome to The Gossip Project, tell us everything you know. </h1>
+<div id="jumbotron" class="p-5 bg-primary text-white rounded">
+    <h1 id="home_title" class="text-center"> Hello <%= @first_name %> ! Welcome to The Gossip Project, tell us everything you know. </h1>
+   
+</div>
 
-<p class="text-center"> View All Gossips :</p>
+<h3 id="view_all" class="text-center"> View All Gossips :</p>
 
 <div id="section_cards">
     <% @gossips.each do |gossip| %>
         <div id="section_cards">
-            <div class="card" style="width: 18rem;">
+            <div class="card border-0" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= gossip.title %></h5>
                     <a href="/gossip/<%= gossip.id %>">Read gossip</a>
-                    <p class="card-text">Created on <%= gossip.created_at%> by <%= gossip.user.first_name %></p>
+                    <p id="created_on" class="card-text">Created on <%= gossip.created_at%> by <%= gossip.user.first_name %></p>
                     
                 </div>
             </div>
