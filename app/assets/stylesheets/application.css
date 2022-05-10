@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
  #section_cards {
     display: flex;
     flex-direction: row;

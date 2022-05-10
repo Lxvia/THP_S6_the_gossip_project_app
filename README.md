@@ -1,9 +1,24 @@
 # README
 
-This is a ruby app made by me for The Hacking Project
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Version of ruby : 2.7.4
+Things you may want to cover:
 
-Don't forget to bundle install before using
+* Ruby version
 
-xx
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TagGossipTest < ActiveSupport::TestCase
+class GossipControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
