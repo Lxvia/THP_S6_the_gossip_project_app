@@ -1,1 +1,16 @@
-<h1>This is the page of a gossip author : <%= @author.first_name %> <h1>
+<div class="d-flex flex-column">
+<h2 class="text-center mt-5">This is the page of a gossip author</h2>
+
+<div class="d-flex justify-content-center">
+    <div class="card border-0 mb-5" style="width: 18rem;">
+        <%= image_tag("dan.jpg", :alt => "picture of Dan Humpfrey", :class => "style_img") %>
+        <div class="card-body">
+            <h5 class="card-title"><%= @author.first_name %> <%= @author.last_name %></h5>
+            <p class="card-text">About me : <%= @author.description %></p>
+            <p class="card-text">Email adress : <%= @author.email %></p>
+            <p class="card-text">Age : <%= @author.age %>y.o</p>
+            <p class="card-text">City : <%= @author.city[:city_name] %></p>
+         </div>
+    </div>
+</div>
+</div>

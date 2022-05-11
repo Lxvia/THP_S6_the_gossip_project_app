@@ -39,9 +39,9 @@ end
     )
 end
 
-20.times do
+20.times do |i|
     gossip = Gossip.create!(
-        title: Faker::Movie.title,
+        title: "Gossip n°#{i}",
         content: Faker::Lorem.paragraph(sentence_count: 3),
         user: User.all.sample
     )
