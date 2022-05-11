@@ -1,4 +1,10 @@
-
+<% if @gossip_new.errors.any? %>
+  <% @gossip_new.errors.full_messages.each do |message| %>
+    <p class="alert alert-danger d-flex justify-content-center" role="alert"><%= message %></p>
+  <% end %>   
+<% end %>
+  
+  
   <div class="d-flex justify-content-center mt-5">
     <%= form_tag url_for(action: 'create'), method: "post" do %>
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -11,7 +17,7 @@
 
       <div class="d-flex flex-column">
         <p class="text-center"><%= label_tag 'Content' %></p>
-        <%= text_area_tag 'body', @gossip_new.content %>
+        <%= text_area_tag 'content', @gossip_new.content %>
       </div>
 
       <div class="p-5 mt-5"><%= submit_tag "Create gossip !" %></div>

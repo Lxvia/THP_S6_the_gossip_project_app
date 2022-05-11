@@ -1,6 +1,7 @@
 class GossipController < ApplicationController
 
     def index
+        #on definit une variable @ pour pouvoir l'utiliser depuis la vue
         # Méthode qui récupère tous les potins et les envoie à la view home pour affichage
     end
       
@@ -16,10 +17,10 @@ class GossipController < ApplicationController
         # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
         # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
         # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
-        @gossip_new = Gossip.new(title: params[:title], content: params[:content])
+        @gossip_new = Gossip.new(user: User.find(11), title: params[:title], content: params[:content])
 
         if @gossip_new.save
-            render :home
+            redirect_to :root
         else
             render :new
         end
