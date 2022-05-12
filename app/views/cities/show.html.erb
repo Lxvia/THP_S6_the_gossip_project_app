@@ -1,0 +1,8 @@
+<div class="d-flex flex-column justify-content-center">
+    <h1><%= @city.city_name %> : all the Gossips </h1>
+    <% @gossips.each do |gossip| %>
+    <div class="border" style="width: 35em">
+        <p> <%= gossip.content %> </p>
+    </div>
+    <% end %>
+</div>

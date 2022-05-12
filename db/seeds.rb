@@ -20,6 +20,11 @@ Gossip.delete_all
     )
 end
 
+City.create!(
+    city_name: "New York Upper East Side",
+    zip_code: "10028",
+)
+
 
 10.times do |i|
 name = Faker::Name.first_name
@@ -43,7 +48,25 @@ end
     gossip = Gossip.create!(
         title: "Gossip n°#{i}",
         content: Faker::Lorem.paragraph(sentence_count: 3),
-        user: User.all.sample
+        user: User.all.sample,
     )
     gossip.tags << Tag.all.sample(2)
+end
+
+User.create!(
+    first_name: "Gossip Girl", 
+    last_name: "Dan Humpfrey", 
+    description: "Who am I ? That's a secret I'll never tell. You know you love me, xoxo, Gossip Girl",
+    email: "gossipgirl@gmail.com",
+    age: 16,
+    city: City.all.sample
+)
+
+40.times do 
+    Comment.create!(
+        content: Faker::TvShows::BojackHorseman.quote,
+        user: User.last,
+        gossip: Gossip.all.sample
+
+    )
 end

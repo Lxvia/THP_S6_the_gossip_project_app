@@ -47,6 +47,11 @@ class GossipController < ApplicationController
     end
       
     def destroy
+        @gossip = Gossip.find(params[:id])
+        @gossip.destroy
+        redirect_to :root
+        #@comment = Comment.find(params[:id])
+        #@comment.destroy
         # Méthode qui récupère le potin concerné et le détruit en base
         # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
     end

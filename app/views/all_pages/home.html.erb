@@ -13,6 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= gossip.title %></h5>
                     <a class="lien_read" href="/gossip/<%= gossip.id %>">Read gossip</a>
+                    <p> <%= gossip.comments.count %> comments </p>
                     <p id="created_on" class="card-text">Created on <%= gossip.created_at%> by <%= gossip.user.first_name %></p>
                     
                 </div>

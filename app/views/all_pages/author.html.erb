@@ -9,7 +9,7 @@
             <p class="card-text">About me : <%= @author.description %></p>
             <p class="card-text">Email adress : <%= @author.email %></p>
             <p class="card-text">Age : <%= @author.age %>y.o</p>
-            <p class="card-text">City : <%= @author.city[:city_name] %></p>
+            <p class="card-text">City : <a href="<%= city_path(@author.city.id)%>"><%= @author.city.city_name %></a></p>
          </div>
     </div>
 </div>
