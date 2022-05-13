@@ -21,10 +21,11 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @gossip = Gossip.find(params[:gossip_id])
-    @comment = @gossip.comments.new(content: params[:comment][:content], user: User.last)
+    @comment = @gossip.comments.new(content: params[:comment][:content], user: current_user)
 
     if @comment.save
       redirect_to request.referer
+      flash[:success] = "Comment saved !"
     end
   end
 
@@ -36,6 +37,7 @@ class CommentsController < ApplicationController
 
       if @comment.update(comment_params)
           redirect_to @comment.gossip
+          flash[:success] = "Comment saved !"
       else 
           render :edit 
       end

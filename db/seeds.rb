@@ -28,13 +28,16 @@ City.create!(
 
 10.times do |i|
 name = Faker::Name.first_name
+password = "motdepasse123"
 User.create!(
     first_name: name, 
     last_name: Faker::Name.last_name, 
     description: Faker::TvShows::MichaelScott.quote,
     email: "#{name}#{i}@gmail.com",
     age: Faker::Number.between(from: 18, to: 50),
-    city: City.all.sample
+    city: City.all.sample,
+    password: password,
+    password_confirmation: password,
     )
 end
 
@@ -59,7 +62,9 @@ User.create!(
     description: "Who am I ? That's a secret I'll never tell. You know you love me, xoxo, Gossip Girl",
     email: "gossipgirl@gmail.com",
     age: 16,
-    city: City.all.sample
+    city: City.all.sample,
+    password: "gossipgirl",
+    password_confirmation: "gossipgirl"
 )
 
 40.times do 

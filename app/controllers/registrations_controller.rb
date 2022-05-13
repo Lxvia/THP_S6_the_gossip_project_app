@@ -9,7 +9,8 @@ class RegistrationsController < ApplicationController
         @user_new.city = @city
         
         if @user_new.save!
-            redirect_to root_path
+            redirect_to "/log_in"
+            flash[:success] = "Thanks !"
         else
             render :new
         end

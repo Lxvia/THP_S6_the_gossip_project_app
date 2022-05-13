@@ -32,26 +32,37 @@ class GossipController < ApplicationController
         @gossip_new = Gossip.new(user: current_user, title: params[:title], content: params[:content])
 
         if @gossip_new.save
+            flash[:succes] = "Gossip saved !"
             redirect_to :root
         else
             render :new
+            flash[:danger] = "Gossip not saved"
         end
     end
       
     def edit
+        
         @gossip = Gossip.find(params[:id])
+
+        if current_user != @gossip.user
+            redirect_to :root
+        end
+    
         # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
     end
       
     def update
+
         @gossip = Gossip.find(params[:id])
 
         post_params = params.require(:gossip).permit(:title, :content)
 
         if @gossip.update(post_params)
             render :show
+            flash[:succes] = "Gossip updated !"
         else 
-            render :edit 
+            render :edit
+            flash[:danger] = "Gossip not updated" 
         end
         # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
         # pour info, le contenu de ce formulaire sera accessible dans le hash params
