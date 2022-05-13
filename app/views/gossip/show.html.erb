@@ -7,6 +7,23 @@
     <a class="text-center" href="<%= edit_gossip_path(@gossip.id) %>">Edit Gossip</a><br><br>
     <a class="text-center" href="<%= gossip_path(@gossip.id) %>" data-confirm="Are you sure ?" data-method="DELETE">Delete Gossip</a>
   <% end %>
+<div class="d-flex justify-content-center">
+<p class="mr-4"><%= @gossip.likes.count %> likes</p>
+  <% like = current_user.likes.find_by(gossip: @gossip) %>
+  <% if like.nil? %>
+    <form action="/likes" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="like[gossip_id]" value="<%= @gossip.id %>">
+      <input type="submit" value="Like">
+    </form>
+  <% else %>
+    <form action="<% like_path(like) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Unlike">
+    </form>
+  <% end %>
+</div>
 
 <h5 class="ml-5"> Comments </h5>
 

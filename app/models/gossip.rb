@@ -5,6 +5,7 @@ class Gossip < ApplicationRecord
     has_many :comments
     #has_many :users, through :comments
     has_and_belongs_to_many :tags
+    has_many :likes
 
     def city
         self.user.city

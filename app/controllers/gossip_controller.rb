@@ -32,7 +32,7 @@ class GossipController < ApplicationController
         @gossip_new = Gossip.new(user: current_user, title: params[:title], content: params[:content])
 
         if @gossip_new.save
-            flash[:succes] = "Gossip saved !"
+            flash[:success] = "Gossip saved !"
             redirect_to :root
         else
             render :new
