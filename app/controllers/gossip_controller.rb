@@ -6,18 +6,30 @@ class GossipController < ApplicationController
     end
       
     def show
+        if logged_in?
+            @gossip_new = Gossip.new# Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+        else
+            flash[:danger] = "You must be logged in to read a gossip"
+            redirect_to "/log_in"
+        end
+
         @gossip = Gossip.find(params[:id])# Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
     end
       
     def new
-        @gossip_new = Gossip.new# Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+        if logged_in?
+            @gossip_new = Gossip.new# Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+        else
+            flash[:danger] = "You must be logged in to post a gossip"
+            redirect_to "/log_in"
+        end
     end
       
     def create
         # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
         # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
         # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
-        @gossip_new = Gossip.new(user: User.find(11), title: params[:title], content: params[:content])
+        @gossip_new = Gossip.new(user: current_user, title: params[:title], content: params[:content])
 
         if @gossip_new.save
             redirect_to :root

@@ -32,6 +32,9 @@
             </div>
       </div>
     </nav>
+      <% flash.each do |type, message| %>
+        <div class="text-center alert alert-<%= type %>"><%= message %></div>
+      <% end %>
     <%= yield %>
   </body>
 </html>

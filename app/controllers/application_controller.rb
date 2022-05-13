@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-    include CurrentUserHelper
+    include SessionsHelper
 end
